@@ -6,6 +6,8 @@ In a typically scenario there will be snapshot builds on a private repo nexus. S
 
 Running a load of infrastructure to test things is hard work. So I am using test-kitchen to test deploying to linux VMs running under Vagrant on my macbook as per https://medium.com/@Joachim8675309/testkitchen-with-ansible-and-testinfra-e3fc4320ced Roughly this is the setup I did as per that article or the other articles that it linked to: 
 
+## Set up on macos
+
 ```
 # install chef sdk
 chef gem install kitchen-ansible
@@ -20,8 +22,14 @@ sudo pip install paramiko
 
 brew cask install vagrant
 vagrant plugin expunge --reinstall
-
 ```
 
-## Known Issues
+## Running
 
+Go into `roles/ansible-role-springboot` and run `kitchen converge` to see it install. 
+
+The `hello_web` role has some tests that are run with `kitchen test`
+
+## What Next?
+
+Moving a microservice needs a fact and a role. 
