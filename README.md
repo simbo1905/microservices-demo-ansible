@@ -30,9 +30,7 @@ vagrant plugin expunge --reinstall
 
 ## Running
 
-Go into `roles/ansible-role-springboot` and run `kitchen converge` to see it install. 
-
-The `hello_web` role has some tests that are run with `kitchen test`
+Go into `roles/ansible-role-springboot` and run `kitchen converge` to see it install then `kitchen login` to have a look around. To see the full tests run which destroys the VM to get a clean start use `kitchen test`
 
 ## What Next?
 

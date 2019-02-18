@@ -1,7 +1,0 @@
----
-last_error: 
-hostname: 127.0.0.1
-port: '2222'
-username: vagrant
-ssh_key: "/Users/consensussolutions/vagrant-ansible/provisioning/roles/hello_web/.kitchen/kitchen-vagrant/default-ubuntu-1604/.vagrant/machines/default/virtualbox/private_key"
-last_action: converge
