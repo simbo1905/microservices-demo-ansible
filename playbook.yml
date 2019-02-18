@@ -2,7 +2,7 @@
   hosts: all
   roles:
     - role: ansible-role-springboot
-      sb_java_package: openjdk-8-jdk
+      sb_java_package: java-1.8.0-openjdk
       sb_app_as_a_service: true
       sb_app_name: microservices-demo
       sb_app_group_id: org.springframework.samples.service.service

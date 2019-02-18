@@ -22,3 +22,6 @@ brew cask install vagrant
 vagrant plugin expunge --reinstall
 
 ```
+
+## Known Issues
+
