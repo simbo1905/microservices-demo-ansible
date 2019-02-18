@@ -9,7 +9,7 @@
       sb_app_artifact_id: microservices-demo
       sb_app_version: 2.0.0.RELEASE
       sb_app_extension: jar
-      sb_app_java_opts_others: registration,8082
+      sb_app_java_opts_others: 
       sb_users_definition:
         - name: Simple Spring Boot App User
           username: sbuser
