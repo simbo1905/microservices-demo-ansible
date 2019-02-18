@@ -7,7 +7,7 @@ After=syslog.target
 User={{ sb_app_user }}
 Group={{ sb_app_user_group }}
 EnvironmentFile={{ sb_applications_root_folder }}/{{ sb_app_name | upper }}/{{ sb_app_name }}.conf
-ExecStart=/usr/bin/java -jar {{ sb_applications_root_folder }}/{{ sb_app_name | upper }}/{{ sb_app_name | upper}} registration 8082
+ExecStart=/usr/bin/java -jar {{ sb_applications_root_folder }}/{{ sb_app_name | upper }}/{{ sb_app_name | upper}}
 SuccessExitStatus=143
 
 [Install]
