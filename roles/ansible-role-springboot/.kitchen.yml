@@ -23,9 +23,6 @@ platforms:
         - remote: sudo pip install six==1.11.0
     transport:
       max_ssh_sessions: 6
-    # lifecycle:
-    #   pre_verify:
-    #     - remote: sudo apt-get -y install python-pip
 
 suites:
   - name: default
