@@ -1,7 +1,30 @@
----
-- hosts: all
-  gather_facts: yes
-  become: true
+- name: Converge
+  hosts: all
   roles:
-    - hello_web
-    
+    - role: ansible-role-springboot
+      sb_java_package: openjdk-8-jdk
+      sb_app_as_a_service: true
+      sb_app_name: microservices-demo
+      sb_app_group_id: org.springframework.samples.service.service
+      sb_app_artifact_id: microservices-demo
+      sb_app_version: 2.0.0.RELEASE
+      sb_app_extension: jar
+      sb_app_java_opts_others: registration,8082
+      sb_users_definition:
+        - name: Simple Spring Boot App User
+          username: sbuser
+          groups: [sbgroup]
+      sb_user_groups_definitions:
+        - name: sbgroup
+      sb_app_user: sbuser
+      sb_app_user_group: sbgroup
+      sb_maven_repository_url: https://simbo1905.github.io/microservices-demo/site/
+      sb_app_repository_username: my-user
+      sb_app_repository_password: my-very-secure-password
+      sb_local_maven_artifact_dowload: false
+      sb_app_config_file_template_path: "{{ playbook_dir }}/roles/ansible-role-springboot/templates/app.conf.j2"
+      sb_app_healthcheck_urls:
+        - "http://localhost:8082/actuator/health"
+      sb_app_healthcheck_ports:
+        - 8082
+      sb_applications_root_folder: /opt/applis

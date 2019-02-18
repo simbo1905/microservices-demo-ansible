@@ -13,12 +13,13 @@ provisioner:
   roles_path: ../../roles
   playbook: ../../playbook.yml
   require_chef_for_busser: true
+  requirements_path: requirements.yml
   
 platforms:
   - name: ubuntu-16.04
-    lifecycle:
-      pre_verify:
-        - remote: sudo apt-get -y install python-pip
+    # lifecycle:
+    #   pre_verify:
+    #     - remote: sudo apt-get -y install python-pip
 
 suites:
   - name: default

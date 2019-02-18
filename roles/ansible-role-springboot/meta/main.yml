@@ -1,0 +1,34 @@
+---
+galaxy_info:
+  author: orachide
+  description: Deploy Spring Boot application as a service (initd or Systemd)
+  company: chidix.fr
+
+  license: license (GPLv2, CC-BY, etc)
+
+  min_ansible_version: 2.4
+
+  platforms:
+    - name: EL
+      versions:
+        - 6
+        - 7
+    - name: Ubuntu
+      versions:
+        - all
+
+  galaxy_tags:
+    - springboot
+    - systemd
+    - systemv
+    - java
+
+dependencies:
+  - role: singleplatform-eng.users
+    users_create_per_user_group: false
+    groups_to_create: "{{ sb_user_groups_definitions }}"
+    users: "{{ sb_users_definition }}"
+  - role: geerlingguy.java
+    # when: "ansible_os_family == 'RedHat'"
+    java_packages:
+      - "{{ sb_java_package }}"
