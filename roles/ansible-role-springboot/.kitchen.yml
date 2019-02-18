@@ -12,15 +12,18 @@ provisioner:
   ansible_diff: true
   roles_path: ../../roles
   playbook: ../../playbook.yml
-  require_chef_for_busser: true
+  require_chef_for_busser: false
   requirements_path: requirements.yml
   
+verifier:
+  name: shell
+  command: >
+    py.test --color=yes
+    --host="paramiko://${KITCHEN_USERNAME}@${KITCHEN_HOSTNAME}:${KITCHEN_PORT}?ssh_identity_file=${KITCHEN_SSH_KEY}"
+    "test/integration/${KITCHEN_SUITE}"
+
 platforms:
   - name: centos-7.2
-    lifecycle:
-      pre_verify:
-        - remote: sudo yum -y install python-pip
-        - remote: sudo pip install six==1.11.0
     transport:
       max_ssh_sessions: 6
 
