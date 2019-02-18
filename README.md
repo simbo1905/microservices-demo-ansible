@@ -30,7 +30,7 @@ vagrant plugin expunge --reinstall
 
 ## Running
 
-Go into `roles/ansible-role-springboot` and run `kitchen verify` to see it install and run tests. Then you can run  `kitchen login` to ssh in and have a look around. If you run `kitchen test` it will destroy the VM which is fine for unit testing but slower than doing an incremental verify. 
+Go into `roles/ansible-role-springboot` and run `kitchen converge && kitchen verify` to see it install and run tests. Then you can run  `kitchen login` to ssh in and have a look around. If you run `kitchen test` it will destroy the VM which is fine for unit testing but slower than doing an incremental verify. 
 
 ## What Next?
 
