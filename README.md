@@ -4,7 +4,7 @@ This is a demo of deploying springboot microservices using ansible.
 
 In a typically scenario there will be snapshot builds on a private repo nexus. So this project deploys jars that are published on github under the project https://github.com/simbo1905/microservices-demo
 
-[The role in this repos is derived from [ansible-role-springboot](https://github.com/orachide/ansible-role-springboot).
+The role in this repos is derived from [ansible-role-springboot](https://github.com/orachide/ansible-role-springboot).
 
 ## Set up on macos
 

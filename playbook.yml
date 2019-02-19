@@ -3,9 +3,6 @@
   vars:
     sb_java_package: java-1.8.0-openjdk
     sb_app_as_a_service: true
-    sb_app_group_id: org.springframework.samples.service.service
-    sb_app_artifact_id: microservices-demo
-    sb_app_version: 2.0.0.RELEASE
     sb_app_extension: jar
     sb_app_java_opts_others: 
     sb_users_definition:
@@ -24,18 +21,24 @@
     sb_applications_root_folder: /opt/applis
   roles:
     - {
-      "role": "ansible-role-springboot",
-      "sb_app_name": "microservices-registration",
-      "sb_app_run_args": '"registration 8082"',
-      "sb_app_healthcheck_urls": [
+      role: "ansible-role-springboot",
+      sb_app_name: "microservices-registration",
+      sb_app_group_id: "org.springframework.samples.service.service",
+      sb_app_artifact_id: "microservices-demo",
+      sb_app_version: "2.0.0.RELEASE",
+      sb_app_run_args: '"registration 8082"',
+      sb_app_healthcheck_urls: [
         "http://localhost:8082/actuator/health"
       ]
     }
     - {
-      "role": "ansible-role-springboot",
-      "sb_app_name": "microservices-web",
-      "sb_app_run_args": '"web 8083"',
-      "sb_app_healthcheck_urls": [
+      role: "ansible-role-springboot",
+      sb_app_name: "microservices-web",
+      sb_app_group_id: "org.springframework.samples.service.service",
+      sb_app_artifact_id: "microservices-demo",
+      sb_app_version: "2.0.1.RELEASE",
+      sb_app_run_args: '"web 8083"',
+      sb_app_healthcheck_urls: [
         "http://localhost:8083/actuator/health"
       ]
     }
