@@ -45,6 +45,6 @@
         "http://localhost:8083/actuator/health"
       ],
       sb_hosts: [
-        "not.my.vm"
+        "my-test-vm"
       ]
     }

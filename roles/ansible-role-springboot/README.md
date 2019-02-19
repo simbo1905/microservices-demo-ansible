@@ -39,7 +39,7 @@ Role Variables
 | sb_app_user  | true     | *None*          | the owner of application files on server|
 | sb_app_user_group  | true     | *None*          | the group owninng application files |
 | sb_app_extension  | true     | *jar*          | the artifact file extension. (jar,war,ear) |
-| sb_app_state  | false     | *present*          | Can be *present* or *absent* depending on install or uninstall|
+| sb_hosts  | true     | *None*          | List of hostnames that the install should run on.|
 | sb_app_classifier  | false     | *None*          | the artifact file classifier (SOURCES,DOCS...) |
 | sb_maven_repository_url  | false     | *[Maven official repo](http://repo1.maven.org/maven2)*          | the url to the maven repository |
 | sb_app_repository_username  | false     | *None*          | username used for mave repo authentication |
