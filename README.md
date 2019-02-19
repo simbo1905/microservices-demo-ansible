@@ -1,12 +1,12 @@
 # microservices-demo-ansible
 
-This is a demo of deploying springboot microservices using ansible. 
+This is a demo of deploying springboot microservices using ansible. More significanly it has logic to [move springboot microservices between hosts](https://devops.stackexchange.com/q/6393/10599). 
 
-In a typically scenario there will be snapshot builds on a private repo nexus. So this project deploys jars that are published on github under the project https://github.com/simbo1905/microservices-demo
+See `playbook-install.yml` that instals two microservices on the same machine that is tested using `test_install.sh` using Test Kitchen. 
 
-The role in this repos is derived from [ansible-role-springboot](https://github.com/orachide/ansible-role-springboot).
+The role in this repos is derived from [ansible-role-springboot](https://github.com/orachide/ansible-role-springboot). It has some modifications to so that rather than `sb_app_state` being static, or defined per hosts or group, it is computed from a new varaible `sb_hosts`. This 
 
-It modifies that role so that rather than `sb_app_state` being static, or defined on hosts, or groups of hosts, it is computed from a new varaible `sb_hosts` using the script `host_test.sh`. This script checks `hostname -f` appears in `sb_hosts`. It then sets  `sb_app_state` to either install or uninstall the app. The idea being that to move one instance of a microservice we need to run on the host we are added to and also the host we are removing it from. This means that we have to run agaisnt all our hosts. Having the explists list right there were we invoke the role makes it easier to see what service is defined where:
+
 
 ```
 roles:
@@ -39,6 +39,8 @@ roles:
       ]
     }
 ```
+
+This project deploys jars that are published on github under the project https://github.com/simbo1905/microservices-demo
 
 ## Set up on macos
 
