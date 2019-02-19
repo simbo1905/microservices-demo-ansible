@@ -2,11 +2,9 @@
 
 This is a demo of deploying springboot microservices using ansible. More significanly it has logic to [move springboot microservices between hosts](https://devops.stackexchange.com/q/6393/10599). 
 
-See `playbook-install.yml` that instals two microservices on the same machine that is tested using `test_install.sh` using Test Kitchen. 
-
 The role in this repos is derived from [ansible-role-springboot](https://github.com/orachide/ansible-role-springboot). It has some modifications to so that rather than `sb_app_state` being static, or defined per hosts or group, it is computed from a new varaible `sb_hosts`. This 
 
-
+See `playbook-install.yml` that instals two microservices on the same machine which has something like this:
 
 ```
 roles:
@@ -40,7 +38,9 @@ roles:
     }
 ```
 
-This project deploys jars that are published on github under the project https://github.com/simbo1905/microservices-demo
+Note that the two different applications of the same roles deploy different springboot microservies onto different `sb_hosts` host list. If you add or remove hosts from the lists the service will be installed or uninstalled. 
+
+Note that with springboot you can have your processes automaticallly register themselves with Eureka for service discovery. You can also use ribbon for client side loadbalancing and breakers. That should make it reasonablly safe to dynamically move one of many microservices between hosts but YMMV. 
 
 ## Set up on macos
 
@@ -67,7 +67,3 @@ vagrant plugin expunge --reinstall
 ## Running
 
 Go into `roles/ansible-role-springboot` and run `kitchen converge && kitchen verify` to see it install and run tests. Then you can run  `kitchen login` to ssh in and have a look around. If you run `kitchen test` it will destroy the VM which is fine for unit testing but slower than doing an incremental verify. 
-
-## What Next?
-
-Moving a microservice needs a fact and a role. 
