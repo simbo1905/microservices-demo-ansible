@@ -2,19 +2,6 @@
 driver:
   name: vagrant
   
-provisioner:
-  name: ansible_playbook
-  hosts: all
-  require_ansible_repo: true
-  require_ansible_omnibus: false
-  ansible_verbose: true
-  ansible_verbosity: 1
-  ansible_diff: true
-  roles_path: ../../roles
-  playbook: ../../playbook.yml
-  require_chef_for_busser: false
-  requirements_path: requirements.yml
-  
 verifier:
   name: shell
   command: >
@@ -26,6 +13,34 @@ platforms:
   - name: centos-7.2
     transport:
       max_ssh_sessions: 6
+    driver:
+      vm_name: my-test-vm
+      vm_hostname: my-test-vm
 
 suites:
-  - name: default
+  - name: install
+    provisioner:
+      name: ansible_playbook
+      hosts: all
+      require_ansible_repo: true
+      require_ansible_omnibus: false
+      ansible_verbose: true
+      ansible_verbosity: 1
+      ansible_diff: true
+      roles_path: ../../roles
+      playbook: ../../playbook-install.yml
+      require_chef_for_busser: false
+      requirements_path: requirements.yml
+  # - name: uninstall
+  #   provisioner:
+  #     name: ansible_playbook
+  #     hosts: all
+  #     require_ansible_repo: true
+  #     require_ansible_omnibus: false
+  #     ansible_verbose: true
+  #     ansible_verbosity: 1
+  #     ansible_diff: true
+  #     roles_path: ../../roles
+  #     playbook: ../../playbook-uninstall.yml
+  #     require_chef_for_busser: false
+  #     requirements_path: requirements.yml

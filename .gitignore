@@ -1,2 +1,3 @@
 .kitchen/
 roles/hello_web/.kitchen/logs/*
+roles/ansible-role-springboot/test/integration/install/testinfra/__pycache__/

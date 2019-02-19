@@ -5,6 +5,16 @@
 
 - import_tasks: check_vars.yml
 
+- name: Transfer the script
+  copy: src=host_test.sh dest=/home/sbuser mode=0777
+
+- name: Resolve hostname
+  command: "/home/sbuser/host_test.sh {{ sb_hosts }}"
+  register: hostname_output
+
+- set_fact: 
+    hostname_listed="{{ 'HOSTNAME_LISTED' in hostname_output.stdout}}"
+
 - name: Set application destination folder
   set_fact:
     sb_app_artifact_destination_folder: "{{ sb_applications_root_folder }}/{{ sb_app_name | upper }}/{{ sb_app_version }}"
