@@ -7,6 +7,8 @@
 
 - set_fact:
     sb_app_state="{% if ansible_hostname in sb_hosts %}present{% else %}absent{% endif %}"
+  when: >
+    sb_hosts
 
 - debug: var=sb_app_state
 
