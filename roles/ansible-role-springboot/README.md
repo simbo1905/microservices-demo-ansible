@@ -26,12 +26,14 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/deployment-instal
 </plugin>
 ```
 
-
 Role Variables
 --------------
 
 | Variables | Required | Default value | Description |
 |-----------|----------|---------------|-------------|
+| sb_hosts  | true     | *None*          | List of hostnames that the app should run on.|
+| sb_app_install_java  | false     | *true*          | should install java before installing app |
+| sb_app_create_users  | false     | *true*          | should create users before installing app |
 | sb_app_name  | true     | *None*          | the application name |
 | sb_app_group_id  | true     | *None*          | the maven artifact group id |
 | sb_app_artifact_id  | true     | *None*          | the maven artifact id |
@@ -39,7 +41,6 @@ Role Variables
 | sb_app_user  | true     | *None*          | the owner of application files on server|
 | sb_app_user_group  | true     | *None*          | the group owninng application files |
 | sb_app_extension  | true     | *jar*          | the artifact file extension. (jar,war,ear) |
-| sb_hosts  | true     | *None*          | List of hostnames that the install should run on.|
 | sb_app_classifier  | false     | *None*          | the artifact file classifier (SOURCES,DOCS...) |
 | sb_maven_repository_url  | false     | *[Maven official repo](http://repo1.maven.org/maven2)*          | the url to the maven repository |
 | sb_app_repository_username  | false     | *None*          | username used for mave repo authentication |
@@ -60,17 +61,17 @@ Role Variables
 
 
 
-
 Dependencies
 ------------
 
 This role can install JAVA using [geerlingguy.java](https://github.com/geerlingguy/ansible-role-java)
 
+This role can create APP user using [singleplatform-eng.users](https://github.com/singleplatform-eng/ansible-users)
+
 Example Playbook
 ----------------
 
 ### Using local maven artifact
-
 
     - name: Converge
       hosts: all

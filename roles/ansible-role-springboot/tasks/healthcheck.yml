@@ -13,7 +13,7 @@
   with_items: "{{ sb_app_healthcheck_urls }}"
   when: >
     sb_app_healthcheck_urls is defined and 
-    sb_app_as_a_service != False
+    sb_app_as_a_service
 
 - name: "Healthcheck | Wait for {{  sb_app_name }} to be healthy on TCP Ports {{ sb_app_healthcheck_ports }}"
   wait_for:
@@ -23,4 +23,4 @@
   with_items: "{{ sb_app_healthcheck_ports }}"
   when: >
     sb_app_healthcheck_ports is defined and
-    sb_app_as_a_service != False
+    sb_app_as_a_service

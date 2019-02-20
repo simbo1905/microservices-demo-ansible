@@ -1,24 +1,9 @@
 - name: Converge
   hosts: all
   vars:
-    sb_java_package: java-1.8.0-openjdk
-    sb_app_as_a_service: true
-    sb_app_extension: jar
-    sb_app_java_opts_others: 
-    sb_users_definition:
-      - name: Simple Spring Boot App User
-        username: sbuser
-        groups: [sbgroup]
-    sb_user_groups_definitions:
-      - name: sbgroup
-    sb_app_user: sbuser
-    sb_app_user_group: sbgroup
     sb_maven_repository_url: https://simbo1905.github.io/microservices-demo/site/
     sb_app_repository_username: my-user
     sb_app_repository_password: my-very-secure-password
-    sb_local_maven_artifact_dowload: false
-    sb_app_config_file_template_path: "{{ playbook_dir }}/roles/ansible-role-springboot/templates/app.conf.j2"
-    sb_applications_root_folder: /opt/applis
   roles:
     - {
       role: "ansible-role-springboot",
