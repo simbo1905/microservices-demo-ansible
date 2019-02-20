@@ -2,7 +2,7 @@
 
 This is a demo of deploying springboot microservices using ansible. More significanly it has logic to [move springboot microservices between hosts](https://devops.stackexchange.com/q/6393/10599). 
 
-The role in this repos is derived from [ansible-role-springboot](https://github.com/orachide/ansible-role-springboot). It has some modifications to so that rather than `sb_app_state` being static, or defined per hosts or group, it is computed from a new varaible `sb_hosts`. This 
+The role in this repos is derived from [ansible-role-springboot](https://github.com/orachide/ansible-role-springboot). That has a variable `sb_app_state` that defines whether to run install or uninstall tasks. This repo computes this variable based on whether the current hostname is in the list `sb_hosts`. The list can be set per microservice. Yoir playbook can run against all hosts for all microservices so that you can easily redistribute microserices between hosts.
 
 See `playbook-install.yml` that instals two microservices on the same machine which has something like this:
 
