@@ -1,5 +1,13 @@
 ---
 
+- name: "Check ansible_hostname not localhost | Assert 'localhost' not in ansible_hostname"
+  assert:
+    that:
+      - "'localhost' not in ansible_hostname"
+    msg: "ansible_hostname must not be 'localhost'"
+
+- debug: var=ansible_hostname
+
 - name: "Check vars | Assert sb_app_name is defined"
   assert:
     that:

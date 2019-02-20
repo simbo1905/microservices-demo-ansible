@@ -5,18 +5,8 @@
 
 - import_tasks: check_vars.yml
 
-- name: Transfer the script
-  copy: src=host_test.sh dest=/home/sbuser mode=0777
-
-- name: Resolve hostname
-  command: "/home/sbuser/host_test.sh {{ sb_hosts }}"
-  register: hostname_output
-
-- set_fact: 
-    hostname_listed="{{ 'HOSTNAME_LISTED' in hostname_output.stdout}}"
-
 - set_fact:
-    sb_app_state="{% if hostname_listed %}present{% else %}absent{% endif %}"
+    sb_app_state="{% if ansible_hostname in sb_hosts %}present{% else %}absent{% endif %}"
 
 - debug: var=sb_app_state
 
